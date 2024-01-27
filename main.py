@@ -1,44 +1,34 @@
 import pickle
-import time
 from cluster import perform_clustering
-from datetime import datetime
-from config import MIN_SIMILARITY_FIRST_ITERATION, MIN_SIMILARITY_NEXT_ITERATIONS, MIN_ENTITIES_IN_CLUSTER
-# from plot import add_log_similarity_day_initial, add_log_similarity_day_next
-from prepare_records import prepare_data
 
-filename = "combined.p"
 
-with open(filename, 'rb') as file:
+MIN_NON_NONE_COLUMNS = 15
+MIN_SIMILARITY_FIRST_ITERATION = 0.5
+MIN_SIMILARITY_NEXT_ITERATIONS = 0.45
+MIN_ENTITIES_IN_CLUSTER = 4
+
+
+with open("combined.p", "rb") as file:
     data = pickle.load(file)
 
-print(data[0])
 
-start_time = time.time()
-
-current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-print(f"Processing file - {filename}, started at {current_time}")
-
-data = prepare_data(data)
-
-# print(data)
+clustering_logs_initial = []
+clustering_logs_next = []
 
 final_clusters = perform_clustering(
-    prepared_data=data,
-    min_similarity_first_iteration=MIN_SIMILARITY_FIRST_ITERATION,
-    min_similarity_next_itarations=MIN_SIMILARITY_NEXT_ITERATIONS,
-    min_elements_in_cluster=MIN_ENTITIES_IN_CLUSTER
-    # clustering_log_initial_iteration_func=add_log_similarity_day_initial,
-    # clustering_log_next_iterations_func=add_log_similarity_day_next,
+    data=data,
+    min_elements_in_cluster=MIN_ENTITIES_IN_CLUSTER,
+    min_similarity_first_iter=MIN_SIMILARITY_FIRST_ITERATION,
+    min_similarity_next_iters=MIN_SIMILARITY_NEXT_ITERATIONS,
+    clustering_log_initial=clustering_logs_initial,
+    clustering_log_next=clustering_logs_next,
+    print_start_end=True,
 )
 
-output_filename = "output.p"
+# print(clustering_logs_next)
+# TODO:
+# write here code that takes clustering_logs and saves them into csv with current date and parameters and put it into README
 
-with open(output_filename, 'wb') as file:
+
+with open("output.p", "wb") as file:
     pickle.dump(final_clusters, file)
-
-end_time = time.time()
-pipeline_duration = int(end_time - start_time)
-minutes = pipeline_duration // 60
-seconds = pipeline_duration % 60
-formatted_time = f"{minutes:02d}:{seconds:02d}"
-print(f"pipeline 3 file - {filename} completed in - {minutes}:{seconds}")

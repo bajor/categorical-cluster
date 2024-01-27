@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 
-def _read_file_and_plot_histogram(filename):
+def read_file_and_plot_histogram(filename):
     try:
         with open(filename, "r") as file:
             lines = file.readlines()
@@ -16,8 +16,3 @@ def _read_file_and_plot_histogram(filename):
         print(f"Error: The file '{filename}' was not found.")
     except Exception as e:
         print(f"An error occurred: {str(e)}")
-
-
-def plot_daily_extended():
-    filname = "logs.csv"
-    _read_file_and_plot_histogram(filname)

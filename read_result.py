@@ -3,7 +3,8 @@ import pickle
 
 filename = "output.p"
 
-with open(filename, 'rb') as file:
+with open(filename, "rb") as file:
     data = pickle.load(file)
 
-print(data[1])
+for d in data[4]:
+    print(d)
