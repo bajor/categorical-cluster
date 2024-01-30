@@ -10,7 +10,7 @@ This code reads the pickle file of the example dataset provided in this reposito
 
 ```
 import pickle
-from categorical_cluster import cluster
+from cluster.categorical_cluster import cluster
 
 
 MIN_SIMILARITY_FIRST_ITERATION = 0.5    # Value from 0 to 1 - % of similarity among entities in clusters
@@ -24,7 +24,7 @@ with open("dataset/sample_dataset.p", "rb") as file:
 
 
 # Perform clustering
-clusters = perform_clustering(
+clusters = cluster(
     data=data,
     min_elements_in_cluster=MIN_ENTITIES_IN_CLUSTER,
     min_similarity_first_iter=MIN_SIMILARITY_FIRST_ITERATION,
