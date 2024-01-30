@@ -1,5 +1,5 @@
 import pickle
-from categorical_cluster import cluster
+from cluster.categorical_cluster import cluster
 
 
 MIN_SIMILARITY_FIRST_ITERATION = 0.5
