@@ -33,6 +33,9 @@ def cluster(
     Returns:
         list: The final clusters after performing clustering.
     """
+    if not (0 < min_similarity_first_iter < 1) or not (0 < min_similarity_next_iters < 1):
+        raise "Similarities should be in range 0 < x < 1"
+
     if print_start_end:
         start_time = _print_start_time()
 
