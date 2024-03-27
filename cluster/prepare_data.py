@@ -84,17 +84,6 @@ def _prepare_records(record: dict) -> dict:
     return record
 
 
-def _create_tags_map(records):
-    tags_map = dict()
-    for record in records:
-        for tag in record["tags"]:
-            if tag not in tags_map:
-                tags_map[tag] = 1
-            else:
-                tags_map[tag] = tags_map[tag] + 1
-    return {k: v for k, v in tags_map.items() if v > 1}
-
-
 def _encode_tags_map(tags_map):
     for index, key in enumerate(tags_map.keys()):
         tags_map[key] = index
