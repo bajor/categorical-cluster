@@ -8,7 +8,7 @@ pip install categorical-cluster
 
 This code reads the pickle file of the example dataset provided in this repository, performs clustering on it, and saves the results in `output.p`.
 
-```
+```python
 import pickle
 from cluster.categorical_cluster import cluster
 
@@ -39,13 +39,13 @@ with open("output.p", "wb") as file:
 
 Input data is a list of rows with "tags"(described later):
 
-```
+```python
 ['envelope laser rectangle', 'casually explained', 'stand up comedy', 'comedy', 'animation', 'animated comedy', 'satire', 'how to', 'advice', 'funny', 'stand up', 'comedian', 'hilarious', 'humor']
 ```
 
 Output would be clusters of input rows with their initial indexes (row numbers from the original input list):
 
-```
+```python
 [{'source_data': ['golf', 'golf highlights', 'ryder cup', 'ryder cup highlights', '2022 ryder cup', '2023 golf', 'marco simone', 'marco simone course', 'marco simone golf', 'luke donald', 'zach johnson', 'u.s. team', 'european team', 'europe golf', 'u.s. golf', 'ryder cup trophy'], 'source_row_number': 22}, {'source_data': ['golf', 'golf highlights', 'ryder cup', 'ryder cup highlights', '2022 ryder cup', '2023 golf', 'marco simone', 'marco simone course', 'marco simone golf', 'luke donald', 'zach johnson', 'u.s. team', 'european team', 'europe golf', 'u.s. golf', 'ryder cup trophy'], 'source_row_number': 235}, {'source_data': ['golf', 'golf highlights', 'ryder cup', 'ryder cup highlights', '2022 ryder cup', '2023 golf', 'marco simone', 'marco simone course', 'marco simone golf', 'luke donald', 'zach johnson', 'u.s. team', 'european team', 'europe golf', 'u.s. golf', 'ryder cup trophy'], 'source_row_number': 484}, {'source_data': ['golf', 'golf highlights', 'ryder cup', 'ryder cup highlights', '2022 ryder cup', '2023 golf', 'marco simone', 'marco simone course', 'marco simone golf', 'luke donald', 'zach johnson', 'u.s. team', 'european team', 'europe golf', 'u.s. golf', 'ryder cup trophy'], 'source_row_number': 538}, {'source_data': ['golf', 'golf highlights', 'ryder cup', 'ryder cup highlights', '2022 ryder cup', '2023 golf', 'marco simone', 'marco simone course', 'marco simone golf', 'luke donald', 'zach johnson', 'u.s. team', 'european team', 'europe golf', 'u.s. golf', 'ryder cup trophy', 'highlights | day 3 | 2023 ryder cup', 'watch highlights of the day 3 at the 2023 ryder cup held at marco simone golf & country club.', '2023 ryder cup held at marco simone golf', 'marco simone golf & country club.', 'highlights of the day 3', 'ryder cup'], 'source_row_number': 627}]
 ```
 
@@ -92,7 +92,7 @@ In the above figure, the x-axis represents the similarity values and the y-axis 
 
 The function below can be used to generate the plot shown above. It takes a list of similarity values as input and plots a histogram of these values.
 
-```
+```python
 import matplotlib.pyplot as plt
 
 
